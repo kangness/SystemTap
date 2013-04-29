@@ -1,0 +1,12 @@
+#/usr/bin/env stap
+#filename hello-world.stp
+
+
+probe begin
+{
+	print("hello world\n")
+	exit()
+}
+
+
+#stap hello-world.stp
