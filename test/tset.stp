@@ -1,0 +1,13 @@
+#/usr/bin/env stap
+
+probe process("/lib/libc.so.6").function("__libc_malloc")
+{
+	if (target() == pid()){
+	
+		print_ubacktrace()
+	}
+}
+
+probe begin{
+	println("~")
+}

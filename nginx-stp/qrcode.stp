@@ -1,0 +1,24 @@
+#/usr/bin/env stap
+
+global bt
+global quit = 0
+
+pribe timer.profile{
+    if (pid() == target()){
+        if (!quit ){
+            bt[backtrace(),ubacktrace()]&lt;&lt;&lt;l
+        }else{
+        
+            foreach([sys,usr] in bt-limit 1000){
+                print_stack(sys)
+                print_ustack(usr)
+                printf("t%dn",@count(bt[sys,usr]))
+            }
+            exit()
+        }
+    }
+}
+
+probe timer.s(20){
+    quit = 1
+}
