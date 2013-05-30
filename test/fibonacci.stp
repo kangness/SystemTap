@@ -1,0 +1,14 @@
+#!/usr/env  stap
+
+function fibonacci(i)
+{
+    if ( i <1 ) error ("Bad Number \n")
+    if ( i == 1 ) return 1
+    if ( i == 2 ) return 2
+    return fibonacci(i-1) + fibonacci(i-2)
+}
+
+probe begin{
+    printf("11th fibonacci number : %d \n",fibonacci(11))
+    exit()
+}
