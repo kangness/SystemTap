@@ -1,0 +1,9 @@
+#!/usr/sbin/env stap
+
+    porbe syscall.*{
+          if (pid() == target()){
+             printf("%s \n",name)   
+          }
+
+    }
+         
