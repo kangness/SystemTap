@@ -14,6 +14,5 @@ probe timer.ms(12345)
     hz = (1000 * count_jiffies) / count_ms
     printf("jiffies:ms ratio %d:%d => CONFIG_HZ = %d \n",
         count_jiffies,count_ms,hz)
-
     exit()
 }
